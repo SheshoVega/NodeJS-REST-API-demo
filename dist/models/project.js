@@ -25,6 +25,10 @@ var projectSchema = new mongoose.Schema({
     product: {
         type: String,
         required: true
+    },
+    created_at: {
+        type: Date,
+        default: Date.now()
     }
 }, { versionKey: false });
 

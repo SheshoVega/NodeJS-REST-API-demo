@@ -28,7 +28,8 @@ var mongoose = require('mongoose');
 var app = express();
 
 //CORS Setup
-var whiteList = []; //add domains
+var whiteList = ['http://localhost:4200' //angular app
+]; //add domains
 var corsOptions = {
     origin: function origin(_origin, callback) {
         if (_origin === undefined || whiteList.indexOf(_origin) !== -1) {
@@ -124,6 +125,7 @@ app.get('/projects/:id', cors(corsOptions), function (request, response) {
     });
 });
 
+app.options('/projects/', cors(corsOptions));
 app.put('/projects/', cors(corsOptions), function (request, response) {
     response.setHeader('content-type', 'application/json');
     DataService.createProject(request.body, function (err, projectId) {
@@ -147,6 +149,7 @@ app.put('/projects/', cors(corsOptions), function (request, response) {
     });
 });
 
+app.options('/projects/:id', cors(corsOptions));
 app.delete('/projects/:id', cors(corsOptions), function (request, response) {
     response.setHeader('content-type', 'application/json');
     DataService.deleteProject(request.params.id, function (err, result) {

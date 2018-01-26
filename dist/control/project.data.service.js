@@ -10,7 +10,7 @@ var _project = require("../models/project");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function getProjects(callback) {
-    _project.Project.find(callback);
+    _project.Project.find({}).sort({ created_at: -1 }).exec(callback);
 };
 
 function getProject(id, callback) {
