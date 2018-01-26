@@ -109,6 +109,6 @@ var data = [
 ];
 
 for (var i = 0; i < data.length; i++) {
-    const project = data[i];
+    const project = Object.assign({},data[i],{ created_at: Date.now() } ) ;
     db.projects.insert(project);    
 }
