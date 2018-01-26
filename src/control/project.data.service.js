@@ -1,7 +1,7 @@
 import { Project, newProject } from "../models/project";
 
 function getProjects(callback) {
-    Project.find(callback);
+    Project.find({}).sort({created_at: -1}).exec(callback);
 };
 
 function getProject(id, callback) {

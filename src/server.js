@@ -10,7 +10,9 @@ import { Project } from './models/project';
 const app = express();
 
 //CORS Setup
-let whiteList = []; //add domains
+let whiteList = [
+    'http://localhost:4200' //angular app
+]; //add domains
 let corsOptions = {
     origin: function (origin, callback) {
         if (origin === undefined || whiteList.indexOf(origin) !== -1) {
@@ -109,6 +111,7 @@ app.get('/projects/:id', cors(corsOptions), (request, response) => {
     });
 });
 
+app.options('/projects/', cors(corsOptions));
 app.put('/projects/', cors(corsOptions), (request, response) => {
     response.setHeader('content-type', 'application/json');
     DataService.createProject(request.body, (err, projectId) => {
@@ -133,6 +136,7 @@ app.put('/projects/', cors(corsOptions), (request, response) => {
 
 });
 
+app.options('/projects/:id', cors(corsOptions));
 app.delete('/projects/:id', cors(corsOptions), (request, response) => {
     response.setHeader('content-type', 'application/json');
     DataService.deleteProject(request.params.id, (err, result) => {
