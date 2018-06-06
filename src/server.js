@@ -29,7 +29,7 @@ let corsOptions = {
 app.use(bodyParser.json());
 
 
-mongoose.connect('mongodb://localhost/NodeJS-REST-API-demo', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/NodeJS-REST-API-demo');
 var db = mongoose.connection;
 
 

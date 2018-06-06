@@ -44,7 +44,7 @@ var corsOptions = {
     // // app.use(bodyParser.urlencoded({ extended: true }));
 };app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/NodeJS-REST-API-demo', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/NodeJS-REST-API-demo');
 var db = mongoose.connection;
 
 app.get('/projects', cors(corsOptions), function (request, response) {
